@@ -10,7 +10,16 @@ end
 CLEAN.include ["**/.*.sw?", "pkg", ".config", "rdoc", "coverage", "www/public/*.html", "www/public/rdoc*"]
 
 # Gem Packaging and Release
+NAME = 'sequel'
+VERS = lambda do
+  require "lib/sequel/version"
+  Sequel.version
+end
+RDOC_DEFAULT_OPTS = ["--quiet", "--line-numbers", "--inline-source", '--title', 'Sequel: The Database Toolkit for Ruby']
+RDOC_OPTS = RDOC_DEFAULT_OPTS + ['--main', 'README.rdoc']
+
 load 'sequel.gemspec'
+
 
 desc "Packages sequel"
 task :package=>[:clean]
