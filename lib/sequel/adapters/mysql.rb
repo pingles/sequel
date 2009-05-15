@@ -124,7 +124,7 @@ module Sequel
         begin
           synchronize(opts[:server]){|conn| _execute(conn, sql, opts, &block)}
         rescue Mysql::Error => e
-          raise_error(e)
+          raise_error(e, :sql => sql)
         end
       end
       
