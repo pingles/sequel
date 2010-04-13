@@ -158,7 +158,7 @@ module Sequel
               when :ddl
                 stmt.execute(sql)
               when :insert
-                stmt.executeUpdate(sql)
+                stmt.executeUpdate(sql, JavaSQL::Statement.RETURN_GENERATED_KEYS)
                 last_insert_id(conn, opts)
               else
                 stmt.executeUpdate(sql)
